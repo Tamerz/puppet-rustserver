@@ -54,5 +54,6 @@ define rustserver::server (
         'description'     => $description,
       }
     ),
+    require => Exec["install ${title} server"],
   }
 }
