@@ -1,0 +1,9 @@
+#!/bin/bash
+
+<%= $install_dir %>/RustDedicated -batchmode -nographics \
+  -server.ip <%= $ip_address %> \
+  -server.port <%= $port %> \
+  -rcon.ip <%= $rcon_ip_address %> \
+  -rcon.port <%= $rcon_port%> \
+  -rcon.password "<%= $rcon_password %>" \
+  -server.maxplayers <%= $max_players %> \
