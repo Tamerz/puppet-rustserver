@@ -1,0 +1,2 @@
+---
+rustserver::steamcmd_path: '/opt/steamcmd/steamcmd.sh'
