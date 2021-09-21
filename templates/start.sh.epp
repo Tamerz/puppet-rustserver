@@ -7,3 +7,11 @@
   -rcon.port <%= $rcon_port%> \
   -rcon.password "<%= $rcon_password %>" \
   -server.maxplayers <%= $max_players %> \
+  -server.hostname "<%= $hostname %>" \
+  -server.identity "<%= $identity %>" \
+  -server.level "<%= $level %>" \
+  -server.seed <%= $seed %> \
+  -server.worldsize <%= $worldsize %> \
+  -server.saveinterval <%= $saveinterval %> \
+  -server.globalchat <%= $globalchat %> \
+  -server.description "<%= $description %>"

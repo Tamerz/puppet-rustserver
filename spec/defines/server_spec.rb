@@ -39,7 +39,14 @@ describe 'rustserver::server' do
         .with_content(%r{^  -rcon.port 28016 \\$})
         .with_content(%r{^  -rcon.password "s0s3cret" \\$})
         .with_content(%r{^  -server.maxplayers 10 \\$})
-        #.that_contains(%r{'-server.ip 0.0.0.0}-server.port 28015 -rcon.ip 0.0.0.0 -rcon.port 28016 -rcon.password "s0s3cret" -server.maxplayers 10 -server.hostname "My Rust Server" ')
+        .with_content(%r{^  -server.hostname "My Rust Server" \\$})
+        .with_content(%r{^  -server.identity "vanilla-01" \\$})
+        .with_content(%r{^  -server.level "Procedural Map" \\$})
+        .with_content(%r{^  -server.seed 163340768 \\$})
+        .with_content(%r{^  -server.worldsize 3000 \\$})
+        .with_content(%r{^  -server.saveinterval 300 \\$})
+        .with_content(%r{^  -server.globalchat true \\$})
+        .with_content(%r{^  -server.description "This is my Rust server."$})
       }
     end
   end

@@ -13,6 +13,14 @@ define rustserver::server (
   Integer $port = 28015,
   Integer $rcon_port = 28016,
   Integer $max_players = 10,
+  Integer[1, 2147483647] $seed = 163340768,
+  Integer[1000, 6000] $worldsize = 3000,
+  Integer $saveinterval = 300,
+  Boolean $globalchat = true,
+  String $hostname = 'My Rust Server',
+  String $description = 'This is my Rust server.',
+  String $identity = $title,
+  String $level = 'Procedural Map',
 ) {
 
   exec { "install ${title} server":
@@ -36,6 +44,14 @@ define rustserver::server (
         'rcon_port'       => $rcon_port,
         'rcon_password'   => $rcon_password,
         'max_players'     => $max_players,
+        'seed'            => $seed,
+        'worldsize'       => $worldsize,
+        'saveinterval'    => $saveinterval,
+        'globalchat'      => $globalchat,
+        'hostname'        => $hostname,
+        'identity'        => $identity,
+        'level'           => $level,
+        'description'     => $description,
       }
     ),
   }
