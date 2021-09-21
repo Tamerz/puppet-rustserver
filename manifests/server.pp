@@ -21,6 +21,8 @@ define rustserver::server (
   String $description = 'This is my Rust server.',
   String $identity = $title,
   String $level = 'Procedural Map',
+  String $user = $rustserver::user,
+  String $group = $rustserver::group,
 ) {
 
   exec { "install ${title} server":
@@ -55,5 +57,29 @@ define rustserver::server (
       }
     ),
     require => Exec["install ${title} server"],
+  }
+
+  file { "/etc/systemd/system/rust-${title}.service":
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    seltype => 'systemd_unit_file_t',
+    content => epp(
+      'rustserver/service.epp',
+      {
+        'title'       => $title,
+        'user'        => $user,
+        'group'       => $group,
+        'install_dir' => $install_dir,
+      }
+    ),
+    require => File["${title} start script"],
+  }
+
+  exec { 'systemd-daemon-reload':
+    command     => '/bin/systemctl daemon-reload',
+    refreshonly => true,
+    subscribe   => File["/etc/systemd/system/rust-${title}.service"],
   }
 }

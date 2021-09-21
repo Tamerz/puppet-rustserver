@@ -50,6 +50,28 @@ describe 'rustserver::server' do
           .with_content(%r{^  -server.description "This is my Rust server."$})
           .that_requires('Exec[install vanilla-01 server]')
       }
+      
+      it {
+        is_expected.to contain_file('/etc/systemd/system/rust-vanilla-01.service')
+          .with(
+            'ensure'  => 'file',
+            'owner'   => 'root',
+            'mode'    => '0644',
+            'seltype' => 'systemd_unit_file_t',
+          )
+          .with_content(%r{^Description="Rust Server vanilla-01"})
+          .with_content(%r{User=rustserver$})
+          .with_content(%r{Group=rustserver$})
+          .with_content(%r{ExecStart=/opt/rustservers/vanilla-01/start.sh$})
+          .that_requires('File[vanilla-01 start script]')
+      }
+
+      it {
+        is_expected.to contain_exec('systemd-daemon-reload').with(
+          'command'     => '/bin/systemctl daemon-reload',
+          'refreshonly' => true,
+        ).that_subscribes_to('File[/etc/systemd/system/rust-vanilla-01.service]')
+      }
     end
   end
 end

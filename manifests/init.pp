@@ -6,5 +6,7 @@
 #   include rustserver
 class rustserver (
   String $steamcmd_path,
+  String $user,
+  String $group,
 ) {
 }

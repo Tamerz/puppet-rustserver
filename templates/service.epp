@@ -1,0 +1,16 @@
+[Unit]
+Description="Rust Server <%= $title %>"
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=<%= $user %>
+Group=<%= $group %>
+ProtectSystem=full
+ProtectHome=read-only
+PrivateTmp=yes
+PrivateDevices=yes
+ExecStart=<%= $install_dir %>/start.sh
+
+[Install]
+WantedBy=multi-user.target
