@@ -20,7 +20,8 @@ define rustserver::server (
   String $hostname = 'My Rust Server',
   String $description = 'This is my Rust server.',
   String $identity = $title,
-  String $level = 'Procedural Map',
+  Enum['Procedural Map', 'Barren', 'HapisIsland', 'SavasIsland'] $level = 'Procedural Map',
+  Enum['vanilla', 'softcore'] $gamemode = 'vanilla',
   String $user = $rustserver::user,
   String $group = $rustserver::group,
 ) {
@@ -54,6 +55,7 @@ define rustserver::server (
         'identity'        => $identity,
         'level'           => $level,
         'description'     => $description,
+        'gamemode'        => $gamemode,
       }
     ),
     require => Exec["install ${title} server"],

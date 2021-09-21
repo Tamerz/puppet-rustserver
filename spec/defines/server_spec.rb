@@ -43,6 +43,7 @@ describe 'rustserver::server' do
           .with_content(%r{^  -server.hostname "My Rust Server" \\$})
           .with_content(%r{^  -server.identity "vanilla-01" \\$})
           .with_content(%r{^  -server.level "Procedural Map" \\$})
+          .with_content(%r{^  -server.gamemode vanilla \\$})
           .with_content(%r{^  -server.seed 163340768 \\$})
           .with_content(%r{^  -server.worldsize 3000 \\$})
           .with_content(%r{^  -server.saveinterval 300 \\$})

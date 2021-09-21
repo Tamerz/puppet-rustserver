@@ -10,6 +10,7 @@
   -server.hostname "<%= $hostname %>" \
   -server.identity "<%= $identity %>" \
   -server.level "<%= $level %>" \
+  -server.gamemode <%= $gamemode %> \
   -server.seed <%= $seed %> \
   -server.worldsize <%= $worldsize %> \
   -server.saveinterval <%= $saveinterval %> \
